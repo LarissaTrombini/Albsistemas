@@ -1,0 +1,438 @@
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ALB SISTEMAS</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <style>
+        body {
+          margin: 0;
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          background-color: #001f3f;
+          color: white;
+        }
+    
+        header {
+          text-align: center;
+          padding: 30px;
+          
+        
+          background-color: #001f3f;      
+        }
+    
+        header img {
+          max-width: 250px;
+        }
+    
+        section {
+          padding: 40px 20px;
+          max-width: 1000px;
+          margin: auto;
+        }
+    
+        h2 {
+          color: #00aced;
+          margin-bottom: 20px;
+          text-align: center;
+        }
+    
+        .system-images {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 20px;
+        }
+    
+        .system-images img {
+          max-width: 300px;
+          border-radius: 10px;
+          box-shadow: 0 0 15px rgba(26, 138, 179, 0.4);
+        }
+    
+        footer {
+          text-align: center;
+          padding: 20px;
+          background-color: #002244;
+          color: #ccc;
+        }
+        .system-card {
+  max-width: 300px;
+  text-align: center;
+  background-color: #012f52;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 172, 237, 0.3);
+}
+
+.system-card img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.system-card h3 {
+  margin: 10px 0 5px;
+  color: #00aced;
+}
+
+.system-card p {
+  font-size: 14px;
+  color: #ccc;
+}
+.system-card {
+  max-width: 300px;
+  text-align: center;
+  background-color: #012f52;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 172, 237, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.system-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 0 25px rgba(0, 172, 237, 0.6);
+}
+.system-images {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  justify-items: center;
+}
+.carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin-top: 15px;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-track img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  margin-right: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+  background-color: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 1;
+  border-radius: 50%;
+}
+
+.carousel-btn.prev {
+  left: 5px;
+}
+
+.carousel-btn.next {
+  right: 5px;
+}
+/* Estilo base */
+.menu {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 10px;
+}
+
+/* Botão hambúrguer */
+.menu-toggle {
+  width: 40px;
+  height: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.menu-toggle span {
+  display: block;
+  height: 4px;
+  width: 100%;
+  background-color: white;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+/* Ícone animado ao abrir menu */
+.menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Menu em mobile: oculto por padrão */
+.menu-list {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 60px;
+  right: 10px;
+  background-color: #012f52;
+  padding: 20px;
+  border-radius: 10px;
+  z-index: 1000;
+}
+
+.menu-list a {
+  color: #00aced;
+  text-decoration: none;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+/* Mostrar menu ao clicar */
+.menu-list.show {
+  display: flex;
+}
+
+/* Estilo desktop */
+@media (min-width: 768px) {
+  .menu-toggle {
+    display: none;
+  }
+
+  .menu-list {
+    display: flex !important;
+    flex-direction: row;
+    position: static;
+    background: none;
+    padding: 0;
+    gap: 20px;
+  }
+
+  .menu-list a {
+    color: white;
+    font-weight: 600;
+    padding: 10px 15px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+  }
+
+  .menu-list a:hover {
+    background-color: #004b80;
+  }
+}
+
+
+ </style>
+
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container header-content">
+      <img src="logo.png" alt="Logo ALB SISTEMAS" class="logo" />
+      <nav class="menu">
+        <button class="menu-toggle" onclick="toggleMenu(this)">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        </ul>
+      </nav>
+      <nav class="menu-list" id="mobileMenu">
+        <a href="#sobre">Sobre</a>
+        <a href="#solucoes">Soluções</a>
+        <a href="#contato">Contato</a>
+        <a href="https://wa.me/5511998746075?text=Olá.">Suporte</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- BANNER -->
+  <section class="banner">
+    <div class="container">
+      <h1>Soluções em Software de Gestão Empresarial</h1>
+      <p>PDVs Fiscais e Não Fiscais com Implantação e Suporte Especializado</p>
+      <a href="https://wa.me/5511947121877?text=Ol%C3%A1." target="_blank" class="btn-whats">Fale pelo WhatsApp</a>
+    </div>
+  </section>
+  <section id="solucoes" class="section solucoes">
+    <div class="container">
+      <h2>Confira nossas soluções</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>🧾 PDV Fiscal</h3>
+          <p>Emissão de notas fiscais eletrônicas (NF-e, NFC-e), integração com SEFAZ, SPED e controle fiscal completo.</p>
+        </div>
+        <div class="card">
+          <h3>🛒 PDV Não Fiscal</h3>
+          <p>Gestão de vendas, estoque, clientes, produtos e relatórios gerenciais para o seu comércio.</p>
+        </div>
+        <div class="card">
+          <h3>🔧 Suporte Técnico</h3>
+          <p>Implantação rápida, treinamento personalizado e suporte técnico especializado para sua equipe.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+ 
+
+  <section>
+    <h2>Data Caixa</h2>
+    <div class="system-images">
+
+        <div class="system-card">
+          <img src="img/pdv data caixa.jpg" alt="PDV Data Caixa">
+          <h3>Ponto de Venda</h3>
+          <p>Interface rápida e intuitiva para frente de caixa, com suporte a vendas, recebimentos, e emissão de cupons fiscais.</p>
+        </div>
+      
+        <div class="system-card">
+          <img src="img/data caixa mesas.jpg" alt="Data Caixa Mesas">
+          <h3>Controle de Mesas</h3>
+          <p>Gerencie mesas ocupadas, comandas e pedidos com agilidade no atendimento de bares e restaurantes.</p>
+        </div>
+      
+        <div class="system-card">
+          <img src="img/data caixa delivrey.jpg" alt="Data Caixa Delivery">
+          <h3>Gestão de Delivery</h3>
+          <p>Integração com pedidos via telefone e apps, controle de entregadores e organização eficiente das entregas.</p>
+        </div>
+      
+        <div class="system-card">
+          <img src="img/data caixa mobile.jpg" alt="Data Caixa Mobile">
+          <h3>PDV Mobile</h3>
+          <p>Realize vendas diretamente do celular ou tablet com mobilidade total e sincronização em tempo real.</p>
+        </div>
+      
+      </div>
+
+  </section>
+  <section>
+    <h2>Saurus</h2>
+    <div class="system-images">
+      <div class="system-card">
+        <img src="img/pdv saarusu.jpg" alt="Saurus PDV">
+        <h3>PDV Saurus</h3>
+        <p>Gestão de vendas, emissão de notas e integração com outros sistemas de forma ágil e eficiente.</p>
+      </div>
+
+      <div class="system-card">
+        <img src="img/saurus mobile.png" alt="Saurus Mobile">
+        <h3>Saurus Mobile</h3>
+        <p>O Saurus Mobile proporciona uma gestão empresarial mais eficiente e prática, eliminando a necessidade de estar restrito a um ponto fixo da empresa, e aumentando a produtividade e mobilidade das equipes de vendas e gestores.</p>
+      </div>
+
+      <div class="system-card">
+        <img src="/finanxeiro.png" alt="Saurus Financeiro">
+        <h3>Gestão Financeira</h3>
+        <p>Controle de contas a pagar e receber, geração de relatórios financeiros e conciliação bancária.</p>
+      </div>
+
+      <div class="system-card">
+        <img src="img/relatorios.png" alt="Saurus Relatórios">
+        <h3>Relatórios Gerenciais</h3>
+        <p>Relatórios completos sobre vendas, estoque e finanças para uma visão clara do desempenho do seu negócio.</p>
+      </div>
+     
+    </div>
+  </section>
+  <section>
+    <h2>Nano - Sistema para Autopeças/ Oficina Mecanica</h2>
+    <div class="system-images">
+      <div class="system-card">
+        <img src="img/nano pdv.jpg" alt="Nano Sistema Autopeças">
+        <h3>Gestão de Vendas</h3>
+        <p>Emissão de notas fiscais e controle de vendas de peças e acessórios, com integração ao sistema de estoque e financeiro.</p>
+      </div>
+  
+      <div class="system-card">
+        <img src="img/drashboard.png" alt="Vendas Nano Autopeças">
+        <h3>Deshboard</h3>
+        <p>Esse tipo de dashboard facilita a tomada de decisões, melhora o controle financeiro e de estoque, e proporciona uma visão completa do desempenho da loja, ajudando a otimizar processos e aumentar a eficiência..
+
+        </p>
+      </div>
+  
+      <div class="system-card">
+        <img src="img/veiculos.png" alt="Nano Clientes Autopeças">
+        <h3>Controle de Veículos</h3>
+        <p>O cadastro de veículos permite registrar e gerenciar informações como placa, modelo, ano, cor e situação do veículo. É ideal para controle de frotas, facilitando a organização, consulta e atualização dos dados de cada veículo no sistema.</p>
+      </div>
+  
+      <div class="system-card">
+        <img src="img/mobile.png" alt="Mobile">
+        <h3>Nano Mobile</h3>
+        <p>O aplicativo NANO App se destina a todos os clientes do sistema Nano, nele você consegue visualizar informações gerenciais e financeiras da sua empresa, sempre e onde quiser. Baixe agora mesmo, disponível para Android e iOS.</p>
+       
+    </div>
+  </section>
+
+  
+
+  <!-- SOBRE -->
+  <section id="sobre" class="section sobre">
+    <div class="container">
+      <h2>Sobre a  Alb Sistemas</h2>
+      <p>A ALB SISTEMAS é especializada na revenda, implantação e suporte técnico de softwares de gestão para empresas de todos os portes. Trabalhamos com soluções fiscais e não fiscais, oferecendo PDVs modernos e eficientes para melhorar o desempenho do seu negócio.</p>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section id="contato" class="section contato">
+    <div class="container">
+      <h2>Entre em Contato</h2>
+      <p>Nos envie uma mensagem ou nos acompanhe nas redes sociais:</p>
+      <div class="redes">
+        <a href="https://wa.me/5511947121877?text=Ol%C3%A1." target="_blank" class="rede whatsapp">WhatsApp</a>
+        <a href="https://www.instagram.com/alb_sistemas?igsh=MWk4N255dnQ1bWlvdQ==" target="_blank" class="rede instagram">Instagram</a>
+        <a href="https://www.facebook.com/profile.php?id=100093643437400" target="_blank" class="rede facebook">Facebook</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ÍCONE FLUTUANTE WHATSAPP -->
+  <a href="https://wa.me/5511947121877?text=Ol%C3%A1.7" 
+     class="whatsapp-icon" 
+     target="_blank" 
+     title="Fale conosco no WhatsApp">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" />
+  </a>
+
+  <!-- RODAPÉ -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 ALB SISTEMAS — Todos os direitos reservados.</p>
+    </div>
+  </footer>
+  <script>
+  function toggleMenu(button) {
+    const menuList = document.querySelector('.menu-list');
+    button.classList.toggle('active');
+    menuList.classList.toggle('show');
+  }
+  </script>
+
+</body>
+</html>
+
