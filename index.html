@@ -10,8 +10,10 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
+
+
+
 <body>
- 
 
   <!-- HEADER -->
   <header class="header">
@@ -21,6 +23,7 @@
   <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
     <i class="fa fa-bars"></i>
   </a>
+  
   <div id="myLinks">
     <a href="#sobre">Sobre</a>
     <a href="#solucoes">Soluções</a>
@@ -30,6 +33,7 @@
 </nav>
       
     </div>
+    
   </header>
 
   <!-- BANNER -->
@@ -123,7 +127,7 @@
     </div>
   </section>
   <section>
-    <h2>Nano - Sistema para Autopeças/ Oficina Mecanica</h2>
+    <h2>Nano - Sistema para Autopeças/ Oficina Mecânica</h2>
     <div class="system-images">
       <div class="system-card">
         <img src="img/nano pdv.jpg" alt="Nano Sistema Autopeças">
@@ -158,8 +162,8 @@
   <!-- SOBRE -->
   <section id="sobre" class="section sobre">
     <div class="container">
-      <h2>Sobre a  Alb Sistemas</h2>
-      <p>A ALB SISTEMAS é especializada na revenda, implantação e suporte técnico de softwares de gestão para empresas de todos os portes. Trabalhamos com soluções fiscais e não fiscais, oferecendo PDVs modernos e eficientes para melhorar o desempenho do seu negócio.</p>
+      <h2>Sobre a ALB Sistemas</h2>
+      <p>A ALB Sistemas oferece soluções completas para gestão empresarial, com sistemas robustos e suporte especializado para diversos tipos de negócios.</p>
     </div>
   </section>
 
@@ -169,19 +173,39 @@
       <h2>Entre em Contato</h2>
       <p>Nos envie uma mensagem ou nos acompanhe nas redes sociais:</p>
       <div class="redes">
-        <a href="https://wa.me/5511947121877?text=Ol%C3%A1." target="_blank" class="rede whatsapp">WhatsApp</a>
-        <a href="https://www.instagram.com/alb_sistemas?igsh=MWk4N255dnQ1bWlvdQ==" target="_blank" class="rede instagram">Instagram</a>
-        <a href="https://www.facebook.com/profile.php?id=100093643437400" target="_blank" class="rede facebook">Facebook</a>
+        <!-- WhatsApp -->
+        <a href="https://wa.me/5511947121877?text=Ol%C3%A1." 
+           target="_blank" 
+           class="rede whatsapp"
+           title="Fale com a gente pelo WhatsApp">
+          WhatsApp
+        </a>
+        
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/alb_sistemas?igsh=MWk4N255dnQ1bWlvdQ==" 
+           target="_blank" 
+           class="rede instagram"
+           title="Acompanhe no Instagram">
+          Instagram
+        </a>
+        
+        <!-- Facebook -->
+        <a href="https://www.facebook.com/profile.php?id=100093643437400" 
+           target="_blank" 
+           class="rede facebook"
+           title="Curta nossa página no Facebook">
+          Facebook
+        </a>
       </div>
     </div>
   </section>
 
   <!-- ÍCONE FLUTUANTE WHATSAPP -->
-  <a href="https://wa.me/5511947121877?text=Ol%C3%A1.7" 
+  <a href="https://wa.me/5511947121877?text=" 
      class="whatsapp-icon" 
      target="_blank" 
-     title="Fale conosco no WhatsApp">
-    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" />
+     title="Solicite uma proposta">
+    <img src="img/whatsapp.png" alt="WhatsApp" />
   </a>
 
   <!-- RODAPÉ -->
@@ -191,10 +215,22 @@
     </div>
   </footer>
   <script>
-    function toggleMenu() {
-  var nav = document.getElementById("menuNav");
-  nav.classList.toggle("responsive");
+      function toggleMenu() {
+  var x = document.getElementById("myLinks");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
 }
+document.querySelectorAll('.rede').forEach(item => {
+  item.addEventListener('click', () => {
+    item.classList.add('clicked');
+    setTimeout(() => {
+      item.classList.remove('clicked');
+    }, 200); // Duração da animação
+  });
+});
   </script>
 
 </body>
