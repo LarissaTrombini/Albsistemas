@@ -356,6 +356,243 @@ footer {
       text-align: center;
 
   }
+  html, body {
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    
+    
+  
+  }
+  
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 20, 50, 0.7)),
+                url('background-site.jpg') no-repeat center center fixed;
+    background-size: cover;
+    z-index: -1;
+  }
+  
+  
+          body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #003366;
+            color: white;
+              }
+      
+          header {
+    text-align: center;
+    padding: 30px;
+    background: transparent;
+  }
+      
+          header img {
+            max-width: 250px;
+          }
+      
+          section {
+            padding: 40px 20px;
+            max-width: 1000px;
+            margin: auto;
+          }
+      
+          h2 {
+            color: #00aced;
+            margin-bottom: 20px;
+            text-align: center;
+          }
+      
+          .system-images {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+          }
+      
+          .system-images img {
+            max-width: 300px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(26, 138, 179, 0.4);
+          }
+      
+          footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #002244;
+            color: #ccc;
+          }
+          .system-card {
+    max-width: 300px;
+    text-align: center;
+    background-color: #012f52;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 172, 237, 0.3);
+  }
+  
+  .system-card img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .system-card h3 {
+    margin: 10px 0 5px;
+    color: #00aced;
+  }
+  
+  .system-card p {
+    font-size: 14px;
+    color: #ccc;
+  }
+  .system-card {
+    max-width: 300px;
+    text-align: center;
+    background-color: #012f52;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 172, 237, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .system-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 0 25px rgba(0, 172, 237, 0.6);
+  }
+  .system-images {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    justify-items: center;
+  }
+  .carousel {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin-top: 15px;
+  }
+  
+  .carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .carousel-track img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    margin-right: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  }
+  
+  .carousel-btn {
+    position: absolute;
+    top: 40%;
+    transform: translateY(-50%);
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1;
+    border-radius: 50%;
+  }
+  
+  .carousel-btn.prev {
+    left: 5px;
+  }
+  
+  .carousel-btn.next {
+    right: 5px;
+  }
+  @keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  .topnav {
+    background: linear-gradient(-45deg, #0d1a2b, #003366, #006699, #00aaff);
+    background-size: 400% 400%;
+    animation: gradientBG 12s ease infinite;
+    padding: 10px 15px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px; /* Adicionando margem superior para afastar o menu do logo */
+  }
+  
+  
+  .topnav .icon {
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    margin-right: 25px;
+  }
+  
+  #myLinks a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+  }
+  
+  #myLinks a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Responsivo */
+  @media screen and (max-width: 768px) {
+    .topnav {
+      flex-direction: column;
+      align-items: center;
+      padding: 10px;
+    }
+  
+    .topnav.responsive #myLinks {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+    }
+  
+    .topnav.responsive #myLinks a {
+      width: auto;
+      min-width: 120px;
+      padding: 10px 20px;
+      background-color: rgba(255, 255, 255, 0.05);
+      font-size: 16px;
+      font-weight: 500;
+    }
+  
+    .topnav.responsive #myLinks a:hover {
+      background-color: rgba(255, 255, 255, 0.15);
+    }
+  }
+  .icon {
+    display: none !important;
+  }
+  nav a {
+    color: white;
+    text-shadow: 0 0 5px rgba(0,0,0,0.6);
+  }
+  .menu {
+    background-color: transparent;
+    box-shadow: none;
+    border: none;
+  }
+  
 
 
 
