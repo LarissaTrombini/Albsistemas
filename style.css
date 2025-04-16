@@ -402,4 +402,85 @@ footer {
   transform: scale(0.95); /* Reduz ligeiramente o tamanho do botão */
   transition: transform 0.1s ease-out; /* Transição suave */
 }
+.sobre {
+  background-color: #001C40;
+  padding: 60px 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0, 172, 237, 0.1);
+  text-align: center;
+  line-height: 1.6;
+}
 
+.sobre h2 {
+  color: #00aced;
+  font-size: 2.2em;
+  margin-bottom: 20px;
+}
+
+.sobre p {
+  color: #cccccc;
+  font-size: 1.1em;
+  max-width: 800px;
+  margin: auto;
+  line-height: 1.8;
+}
+.sobre {
+  animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (max-width: 768px) {
+  .sobre h2 {
+    font-size: 1.8em;
+  }
+
+  .sobre p {
+    font-size: 1em;
+    padding: 0 10px;
+  }
+}
+
+.sobre-img {
+  max-width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.sobre-img img {
+  width: 100%;
+  max-width: 600px; /* Limite para não ficar exagerado em telas grandes */
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 172, 237, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.sobre-img img:hover {
+  transform: scale(1.03);
+}
+#sobre .container {
+  text-align: center;
+}
+
+.sobre-img img {
+  max-width: 150%;
+  height: auto;
+}
+
+.descricao-sobre {
+  margin-top: 15px;
+  font-size: 18px;
+  color: #fff; /* ou outra cor clara que combine com o fundo escuro */
+}
