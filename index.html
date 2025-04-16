@@ -14,6 +14,7 @@
 
 
 <body>
+  
 
   <!-- HEADER -->
   <header class="header">
@@ -64,7 +65,6 @@
     </div>
   </section>
   
- 
 
   <section>
     <h2>Data Caixa</h2>
@@ -97,6 +97,27 @@
       </div>
 
   </section>
+  <!-- Módulo Destaque -->
+</div>
+<div class="system-destaque-wrapper">
+  <h3 class="destaque-titulo">Cardápio Digital Data Caixa</h3>
+  <p class="destaque-subtitulo">
+    Ofereça uma experiência moderna com visualização de cardápio via QR Code, pedidos direto da mesa e atualização em tempo real.
+  </p>
+
+  <div class="system-card destaque">
+    <div class="carousel">
+      <img src="img/CARDAPIO.png" alt="Cardápio 1" class="carousel-image active">
+      <img src="img/DASHBOARD DATA CAIXA CARDAPIO.png" alt="Cardápio 2" class="carousel-image">
+    </div>
+    <h3 id="carousel-title">Cardápio QR Code</h3>
+    <p id="carousel-text">Permita que os clientes escaneiem o QR Code e vejam o cardápio diretamente em seus dispositivos.</p>
+  </div>
+</div>
+    <h3></h3>
+   
+  </div>
+</section>
   <section>
     <h2>Saurus</h2>
     <div class="system-images">
@@ -232,6 +253,32 @@ document.querySelectorAll('.rede').forEach(item => {
     }, 200); // Duração da animação
   });
 });
+const images = document.querySelectorAll('.carousel-image');
+  const title = document.getElementById('carousel-title');
+  const text = document.getElementById('carousel-text');
+
+  const contents = [
+    {
+      title: "Atualização em Tempo Real",
+      text: "Altere preços, itens e promoções instantaneamente, sem necessidade de reimpressão.",
+    },
+    {
+      title: "Dashboard Completo",
+      text: "Um dashboard de excelente performaçe, para voce ter o controle do seu negocio na palma da mão",
+    },
+    
+  ];
+
+  let index = 0;
+
+  setInterval(() => {
+    images[index].classList.remove('active');
+    index = (index + 1) % images.length;
+    images[index].classList.add('active');
+
+    title.textContent = contents[index].title;
+    text.textContent = contents[index].text;
+  }, 4000); // troca a cada 4 segundos
   </script>
 
 </body>
