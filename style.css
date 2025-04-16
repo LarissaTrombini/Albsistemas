@@ -1124,3 +1124,18 @@ footer {
   50% { transform: translateX(10px); } /* Move um pouco para a direita */
   100% { transform: translateX(0); } /* Retorna à posição original */
 }
+#solucoes h2 {
+  margin-top: -75px; /* Ajuste esse valor conforme necessário para subir o título */
+}
+#data-caixa h2 {
+  margin-top: 50px; /* Ajuste esse valor conforme necessário para subir o título */
+  margin-bottom: 30px;
+}
+#saurus h2 {
+  margin-top: 50px; /* Ajuste esse valor conforme necessário para subir o título */
+  margin-bottom: 30px;
+}
+#nano h2 {
+  margin-top: 50px; /* Ajuste esse valor conforme necessário para subir o título */
+  margin-bottom: 30px;
+}
