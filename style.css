@@ -890,8 +890,9 @@ footer {
 .cards-solucoes h2 {
   font-size: 2.5rem;
   margin-bottom: 10px;
+  background: #001F3F ;
+ 
 }
-
 .cards-solucoes p {
   font-size: 1.1rem;
   margin-bottom: 40px;
