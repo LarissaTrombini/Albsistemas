@@ -1139,3 +1139,8 @@ footer {
   margin-top: 50px; /* Ajuste esse valor conforme necessário para subir o título */
   margin-bottom: 30px;
 }
+.cards-solucoes h2{
+  margin-top: -50px; /* Ajuste esse valor conforme necessário para subir o título */
+  
+
+}
