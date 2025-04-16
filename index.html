@@ -9,6 +9,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    <!-- Adicionando o Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  
+  
+
 </head>
 
 
@@ -31,17 +36,64 @@
     <a href="#contato">Contato</a>
     <a href="https://wa.me/5511998746075?text=Olá.">Suporte</a>
   </div>
-</nav>
-      
-    </div>
-    
   </header>
+  <section class="cards-solucoes">
+    <h2>Automação Comercial</h2>
+    <p>Conheça nossas soluções em sistemas PDV, delivery, e controle de estoque.</p>
+  
+    <div class="cards-wrapper">
+      <div class="card pequeno">
+        <img src="/BANNER1.png" alt="Data Caixa">
+        <h3>SISTEMAS</h3>
+        <p>Sistema de Frente de Caixa (PDV) ágil, estável e intuitivo, ideal para comércios de todos os portes. Oferece controle de vendas, estoque, financeiro e integração com equipamentos de automação como impressoras fiscais e leitores de código de barras. Ideal para agilizar atendimentos e evitar erros operacionais.
+
+        </p>
+        <a class="whatsapp-button" href="https://wa.me/5599999999999?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20equipamentos%20de%20automação%20comercial." target="_blank">
+          Saiba mais
+        </a>
+      
+      </div>
+      <div class="card geane">
+        <img src="/BANNER3.png" alt="Nano">
+        <h3>Automação Comercial na prática</h3>
+        <p>A automação comercial integra equipamentos e sistemas para agilizar vendas, controlar estoque e organizar o financeiro. Ela elimina tarefas manuais, aumenta a produtividade e reduz erros no dia a dia do seu negócio.</p>
+        <a class="whatsapp-button" href="https://wa.me/5599999999999?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20equipamentos%20de%20automação%20comercial." target="_blank">
+          Saiba mais
+        </a>
+      </div>
+  
+      <div class="card pequeno">
+        <img src="/Automação-Comercial.png" alt="Saurus">
+        <h3>EQUIPAMENTOS</h3>
+        <p>Na automação comercial, usamos equipamentos como terminais de PDV, leitores de código de barras, impressoras fiscais, balanças e gavetas de dinheiro. Esses dispositivos trabalham juntos com o sistema para agilizar vendas, dar precisão nas operações e oferecer mais controle ao comerciante.</p>
+        <a class="whatsapp-button" href="https://wa.me/5599999999999?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20equipamentos%20de%20automação%20comercial." target="_blank">
+          Saiba mais
+        </a>
+      </div>
+  
+      
+      </div>
+    </div>
+  </section>
+  
 
   <!-- BANNER -->
   <section class="banner">
     <div class="container">
-      <h1>Soluções em Software de Gestão Empresarial</h1>
+      <h1>Soluções inteligentes para o seu PDV</h1>
       <p>PDVs Fiscais e Não Fiscais com Implantação e Suporte Especializado</p>
+      <!-- Botões com ícones -->
+<div class="sistemas-btns">
+  <a href="#data-caixa" class="sistema-btn">
+    <i class="fa fa-cogs"></i> Data Caixa
+  </a>
+  <a href="#saurus" class="sistema-btn">
+    <i class="fa fa-chart-line"></i> Saurus
+  </a>
+  <a href="#nano" class="sistema-btn">
+    <i class="fa fa-mobile-alt"></i> Nano
+  </a>
+</div>
       <a href="https://wa.me/5511947121877?text=Ol%C3%A1." target="_blank" class="btn-whats">Fale pelo WhatsApp</a>
     </div>
   </section>
@@ -66,7 +118,7 @@
   </section>
   
 
-  <section>
+  <section id="data-caixa">
     <h2>Data Caixa</h2>
     <div class="system-images">
 
@@ -119,8 +171,8 @@
    
   </div>
 </section>
-  <section>
-    <h2>Saurus</h2>
+<section id="saurus">
+  <h2>Saurus</h2>
     <div class="system-images">
       <div class="system-card">
         <img src="img/pdv saarusu.jpg" alt="Saurus PDV">
@@ -148,7 +200,7 @@
      
     </div>
   </section>
-  <section>
+  <section id="nano">
     <h2>Nano - Sistema para Autopeças/ Oficina Mecânica</h2>
     <div class="system-images">
       <div class="system-card">
@@ -238,6 +290,7 @@
     </div>
   </footer>
   <script>
+    
     window.location.hash = "#";
       function toggleMenu() {
   var x = document.getElementById("myLinks");
@@ -285,6 +338,37 @@ const images = document.querySelectorAll('.carousel-image');
     title.textContent = contents[index].title;
     text.textContent = contents[index].text;
   }, 4000); // troca a cada 4 segundos
+  window.addEventListener('scroll', function() {
+  const sections = document.querySelectorAll('.section, .system-card, .system-destaque-wrapper, .sobre-img');
+  const windowHeight = window.innerHeight;
+
+  sections.forEach(section => {
+    const sectionTop = section.getBoundingClientRect().top;
+    if (sectionTop < windowHeight * 0.8) {  // Se a seção estiver 80% visível
+      section.classList.add('visible');
+    }
+  });
+});
+const bannerImgs = document.querySelectorAll('.carrossel-img');
+  let bannerIndex = 0;
+
+  function trocarBanner() {
+    bannerImgs[bannerIndex].classList.remove('active');
+    bannerIndex = (bannerIndex + 1) % bannerImgs.length;
+    bannerImgs[bannerIndex].classList.add('active');
+  }
+
+  setInterval(trocarBanner, 4000); // Troca a cada 4 segundos
+  let current = 0;
+  const cards = document.querySelectorAll('.card');
+
+  setInterval(() => {
+    cards[current].classList.remove('active');
+    current = (current + 1) % cards.length;
+    cards[current].classList.add('active');
+  }, 3000); // troca a cada 3 segundos
+
+
   </script>
 
 </body>
