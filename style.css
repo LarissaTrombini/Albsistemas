@@ -59,12 +59,17 @@ section {
 }
 
 h2 {
-  color: #00aced;
-  margin-bottom: 20px;
+  font-size: 36px;
+  font-weight: bold;
+  color: #fff;
   text-align: center;
-  font-size: 2em;
+  transition: color 0.3s ease, transform 0.3s ease; /* Transição suave */
 }
 
+h2:hover {
+  color: #f00707; /* Muda a cor ao passar o mouse */
+  transform: scale(1.1); /* Aumenta o tamanho do título ao passar o mouse */
+}
 .banner {
  background-color: #001F3F;
   background-size: 400% 400%;
@@ -72,6 +77,8 @@ h2 {
   color: white;
   padding: 80px 0;
   text-align: center;
+  position: relative;
+  top: -100px; /* Mova para cima ajustando o valor de 'top' */
 }
 
 
