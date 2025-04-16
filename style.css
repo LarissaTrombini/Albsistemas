@@ -1070,3 +1070,36 @@ footer {
   text-decoration: none;
   display: inline-block;
 }
+#logo-alb {
+  width: 200px;
+  transition: transform 0.3s ease, filter 0.3s ease;
+
+}
+
+/* Animação ao passar o mouse */
+#logo-alb:hover {
+  animation: brilhoGiro 1.5s infinite ease-in-out;
+}
+
+@keyframes brilhoGiro {
+  0% {
+    transform: rotate(0deg) scale(1);
+    filter: drop-shadow(0 0 5px #00ffff);
+  }
+  25% {
+    transform: rotate(5deg) scale(1.05);
+    filter: drop-shadow(0 0 15px #00ffff);
+  }
+  50% {
+    transform: rotate(-5deg) scale(1.1);
+    filter: drop-shadow(0 0 25px #00ffff);
+  }
+  75% {
+    transform: rotate(3deg) scale(1.05);
+    filter: drop-shadow(0 0 10px #00ffff);
+  }
+  100% {
+    transform: rotate(0deg) scale(1);
+    filter: drop-shadow(0 0 5px #00ffff);
+  }
+}
