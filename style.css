@@ -881,7 +881,7 @@ footer {
   position: relative;
   flex-wrap: wrap;
 }.cards-solucoes {
-  background-color: #001B3A;
+  background: #001F3F ;
   padding: 80px 20px;
   text-align: center;
   color: white;
@@ -899,6 +899,7 @@ footer {
 }
 
 .cards-wrapper {
+ 
   display: flex;
   justify-content: center;
   align-items: flex-end;
