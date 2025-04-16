@@ -168,12 +168,13 @@ h2 {
 }
 /* CARDS E SISTEMAS */
 .cards {
+
   display: flex;
   flex-wrap: wrap;
   gap: 22px;
   justify-content: center;
   margin-top: 30px;
-  background:#001C40;
+ background-color: #001F3F;
 }
 
 .card {
@@ -768,6 +769,7 @@ footer {
   max-width: 1000px;
   aspect-ratio: 16 / 9; /* ou use height: auto se preferir */
   margin: auto;
+  
 }
 
 .carrossel-img {
@@ -822,7 +824,6 @@ footer {
 
 .card {
   background: white;
-  color: #001B3A;
   padding: 20px;
   border-radius: 20px;
   width: 250px;
@@ -838,6 +839,7 @@ footer {
   opacity: 1;
   z-index: 3;
   box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  
 }
 
 .card img {
