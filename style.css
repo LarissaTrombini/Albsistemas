@@ -1103,3 +1103,17 @@ footer {
     filter: drop-shadow(0 0 5px #00ffff);
   }
 }
+@media screen and (min-width: 768px) {
+  .logo {
+    max-width: 300px;  /* Tamanho adequado para desktops */
+    width: 30%; /* Para o logo ocupar uma porcentagem da tela */
+    animation: moveLogo 5s ease-in-out infinite; /* Animação de movimento */
+  }
+}
+
+/* Animação para o logo (movimento leve) */
+@keyframes moveLogo {
+  0% { transform: translateX(0); }
+  50% { transform: translateX(10px); } /* Move um pouco para a direita */
+  100% { transform: translateX(0); } /* Retorna à posição original */
+}
