@@ -1,31 +1,52 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
-  <title>Loja ALB Sistemas</title>
-  <link rel="stylesheet" href="stylee.css" />
-  <!-- Importa o script que vai carregar os produtos -->
-  <script type="module" src="loja.js" defer></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Loja ALB</title>
+  <style>
+    body { font-family: Arial; padding: 20px; background: #f4f4f4; }
+    .produto { background: white; padding: 10px; margin: 10px 0; border-radius: 5px; }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>Loja ALB Sistemas</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="loja.html" class="active">Loja</a>
-    </nav>
-  </header>
+  <h1>Produtos da Loja</h1>
+  <div id="lista-produtos"></div>
 
-  <main>
-    <section id="produtos" class="produtos-container">
-        <div id="lista-produtos"></div>
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js"></script>
 
-      <!-- Produtos carregados dinamicamente aqui -->
-    </section>
-  </main>
+  <script>
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+    import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
 
-  <footer>
-    <p>© 2025 ALB Sistemas</p>
-  </footer>
+    const firebaseConfig = {
+      apiKey: "AIzaSyBWefqDsrHoxE5omMq3Bnf9BTz5waAV-Qg",
+      authDomain: "alb-site.firebaseapp.com",
+      databaseURL: "https://alb-site-default-rtdb.firebaseio.com",
+      projectId: "alb-site",
+      storageBucket: "alb-site.firebasestorage.app",
+      messagingSenderId: "619405356101",
+      appId: "1:619405356101:web:b7c8b22876a3005897872c"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+
+    const lista = document.getElementById("lista-produtos");
+    const produtosRef = ref(db, "produtos");
+
+    onValue(produtosRef, (snapshot) => {
+      lista.innerHTML = "";
+      snapshot.forEach((childSnapshot) => {
+        const produto = childSnapshot.val();
+        const div = document.createElement("div");
+        div.className = "produto";
+        div.innerHTML = `<h3>${produto.nome}</h3><p>Preço: R$ ${produto.preco}</p>`;
+        lista.appendChild(div);
+      });
+    });
+  </script>
 </body>
 </html>
