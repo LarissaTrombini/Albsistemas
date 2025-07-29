@@ -1,0 +1,207 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: sans-serif;
+    background-color: #1e1e1e;
+    color: white;
+    overflow: hidden;
+  }
+  
+  header {
+    text-align: center;
+    padding: 20px;
+    background-color: #8B0000;
+  }
+  
+  .logo {
+    max-height: 80px;
+  }
+  
+  main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 120px);
+  }
+  
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colunas */
+    grid-template-rows: repeat(3, 1fr);    /* 3 linhas */
+    gap: 20px;
+    width: 90%;
+    height: 90%;
+  }
+  
+  .card {
+    background-color: #2b2b2b;
+    border-radius: 15px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 0 10px #000;
+  }
+  
+  .card img {
+    width: 100%;
+    max-height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  
+  .card h3 {
+    margin: 10px 0 5px;
+  }
+  
+  .card p {
+    color: #ffcc00;
+    font-size: 18px;
+  }
+  .logo {
+    max-height: 150px;
+    height: auto;
+    width: auto;
+    margin: 0 auto;
+    display: block;
+    filter: drop-shadow(0 0 10px #ffcc00);
+    transition: transform 0.3s ease;
+  }
+  
+  .logo:hover {
+    transform: scale(1.05);
+  }  
+ 
+/* Estilos gerais */
+.planos {
+  padding: 40px 20px;
+  background-color: #002f5a;
+  color: #fff;
+  text-align: center;
+}
+
+.planos h2 {
+  font-size: 2em;
+  margin-bottom: 30px;
+}
+
+/* Contêiner de planos */
+.planos-container {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap; /* Isso faz os planos quebrarem para a próxima linha em telas pequenas */
+  padding: 0 10px;
+  overflow-x: hidden; /* Impede rolagem horizontal */
+}
+
+/* Estilos para os planos */
+.plano {
+  flex: 1 0 300px; /* Garante que os planos tenham uma largura mínima de 300px */
+  background-color: #003a6e;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+  text-align: left; /* Deixa o texto alinhado à esquerda para melhor legibilidade */
+  max-width: 350px; /* Limita a largura máxima do plano */
+  margin: 10px;
+}
+
+.plano:hover {
+  transform: translateY(-10px); /* Efeito visual para hover */
+}
+
+.plano h3 {
+  font-size: 1.5em;
+  margin-bottom: 15px;
+}
+
+.plano p {
+  font-size: 1.1em;
+  margin: 10px 0;
+}
+
+/* Botão WhatsApp */
+.btn-whatsapp {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: #25D366;
+  color: #fff;
+  border-radius: 25px;
+  text-decoration: none;
+  font-size: 1.1em;
+}
+
+/* Responsividade para dispositivos móveis */
+@media (max-width: 768px) {
+  .planos h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+  }
+
+  .planos-container {
+    flex-direction: column; /* Empilha os planos verticalmente em telas menores */
+    gap: 15px;
+    justify-content: flex-start; /* Garante que os planos fiquem no topo */
+    padding: 0 10px;
+  }
+
+  .plano {
+    flex: 1 0 100%; /* Faz os planos ocuparem toda a largura disponível */
+    padding: 20px;
+    max-width: 100%;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .plano h3 {
+    font-size: 1.4em;
+    margin-bottom: 10px;
+  }
+
+  .plano p {
+    font-size: 1em;
+  }
+
+  .btn-whatsapp {
+    padding: 8px 16px;
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 480px) {
+  .planos h2 {
+    font-size: 1.6em;
+    margin-bottom: 15px;
+  }
+
+  .planos-container {
+    flex-direction: column; /* Empilha os planos verticalmente em telas ainda menores */
+    gap: 20px;
+    padding: 0 10px;
+  }
+
+  .plano {
+    flex: 1 0 100%; /* Garante que os planos ocupem 100% da largura da tela */
+    padding: 15px;
+    max-width: 100%;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+  }
+
+  .plano h3 {
+    font-size: 1.3em;
+    margin-bottom: 10px;
+  }
+
+  .plano p {
+    font-size: 0.95em;
+  }
+
+  .btn-whatsapp {
+    padding: 8px 16px;
+    font-size: 0.95em;
+  }
+}

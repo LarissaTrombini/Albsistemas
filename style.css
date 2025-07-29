@@ -1144,3 +1144,113 @@ footer {
   
 
 }
+/* Estilo geral da seção de planos */
+.planos {
+  background-color: #002f5a; /* Cor de fundo */
+  color: #fff; /* Cor do texto */
+  padding: 40px 20px; /* Espaçamento interno */
+  text-align: center; /* Alinhamento do texto */
+}
+
+.planos h2 {
+  font-size: 2em;
+  margin-bottom: 30px;
+}
+
+.planos-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.plano {
+  background-color: #003e6b; /* Cor de fundo para cada plano */
+  padding: 30px;
+  border-radius: 8px; /* Bordas arredondadas */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra leve */
+  width: 100%;
+  max-width: 300px;
+  text-align: left; /* Alinhamento do texto no plano */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Efeito de transição */
+}
+
+.plano:hover {
+  transform: translateY(-10px); /* Efeito de hover (movimento para cima) */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2); /* Efeito de sombra mais forte */
+}
+
+.plano h3 {
+  font-size: 1.6em;
+  margin-bottom: 15px;
+}
+
+.plano p {
+  margin: 10px 0;
+  font-size: 1.1em;
+}
+
+.plano strong {
+  font-size: 1.2em;
+  margin-top: 15px;
+}
+
+.plano .btn-whatsapp {
+  display: inline-block;
+  background-color: #25D366; /* Cor do botão do WhatsApp */
+  color: #fff;
+  padding: 12px 20px;
+  margin-top: 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.plano .btn-whatsapp:hover {
+  background-color: #128C7E; /* Cor do botão ao passar o mouse */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  /* Em dispositivos móveis, o texto do título pode diminuir e a largura dos planos se adapta */
+  .planos h2 {
+    font-size: 1.6em; /* Menor tamanho de fonte no título */
+  }
+
+  .planos-container {
+    justify-content: center; /* Centraliza os planos */
+  }
+
+  .plano {
+    max-width: 90%; /* Aumenta a largura do plano para ocupar mais espaço */
+    margin-bottom: 20px; /* Espaçamento entre os planos */
+  }
+
+  .plano h3 {
+    font-size: 1.4em; /* Tamanho da fonte do título dos planos ajustado */
+  }
+
+  .plano p {
+    font-size: 1em; /* Ajusta o tamanho da fonte do texto */
+  }
+
+  .plano .btn-whatsapp {
+    padding: 10px 18px; /* Ajuste do botão para o tamanho mobile */
+  }
+}
+
+@media (min-width: 769px) {
+  /* Para desktop, garantimos que os planos fiquem distribuídos igualmente */
+  .planos-container {
+    justify-content: space-between; /* Distribui os planos igualmente em grandes telas */
+  }
+
+  .plano {
+    max-width: 300px; /* Limita a largura dos planos em desktop */
+  }
+
+  .plano h3 {
+    font-size: 1.6em; /* Tamanho do título no desktop */
+  }
+}
