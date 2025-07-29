@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+    <!-- no <head> ou antes do fechamento do </body> -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Loja ALB</title>
@@ -17,36 +21,49 @@
   <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js"></script>
 
-  <script>
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
-    import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
+ <script>
+  // Configuração Firebase
+  const firebaseConfig = {
+    apiKey: "AIzaSyBWefqDsrHoxE5omMq3Bnf9BTz5waAV-Qg",
+    authDomain: "alb-site.firebaseapp.com",
+    databaseURL: "https://alb-site-default-rtdb.firebaseio.com",
+    projectId: "alb-site",
+    storageBucket: "alb-site.appspot.com",
+    messagingSenderId: "619405356101",
+    appId: "1:619405356101:web:b7c8b22876a3005897872c"
+  };
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyBWefqDsrHoxE5omMq3Bnf9BTz5waAV-Qg",
-      authDomain: "alb-site.firebaseapp.com",
-      databaseURL: "https://alb-site-default-rtdb.firebaseio.com",
-      projectId: "alb-site",
-      storageBucket: "alb-site.firebasestorage.app",
-      messagingSenderId: "619405356101",
-      appId: "1:619405356101:web:b7c8b22876a3005897872c"
-    };
+  // Inicializa app
+  firebase.initializeApp(firebaseConfig);
 
-    const app = initializeApp(firebaseConfig);
-    const db = getDatabase(app);
+  // Referência do banco
+  const db = firebase.database();
 
-    const lista = document.getElementById("lista-produtos");
-    const produtosRef = ref(db, "produtos");
+  // Referência a produtos
+  const produtosRef = db.ref('produtos');
 
-    onValue(produtosRef, (snapshot) => {
-      lista.innerHTML = "";
-      snapshot.forEach((childSnapshot) => {
-        const produto = childSnapshot.val();
-        const div = document.createElement("div");
-        div.className = "produto";
-        div.innerHTML = `<h3>${produto.nome}</h3><p>Preço: R$ ${produto.preco}</p>`;
-        lista.appendChild(div);
+  const container = document.getElementById('produtos');
+
+  produtosRef.on('value', (snapshot) => {
+    const data = snapshot.val();
+    container.innerHTML = '';
+
+    if (data) {
+      Object.keys(data).forEach(key => {
+        const p = data[key];
+        container.innerHTML += `
+          <div class="produto">
+            <h3>${p.nome}</h3>
+            <p>Preço: R$ ${p.preco}</p>
+          </div>
+        `;
       });
-    });
-  </script>
+    } else {
+      container.innerHTML = 'Nenhum produto encontrado.';
+    }
+  });
+</script>
+
+  
 </body>
 </html>
