@@ -1,6 +1,16 @@
 {
-  "nome": "Nome do Produto",
-  "descricao": "Descrição curta do produto",
-  "preco": "59.90",
-  "imagem": "https://link-da-imagem.jpg"
+  "produtos": {
+    "1": {
+      "nome": "Produto 1",
+      "descricao": "Descrição do produto 1",
+      "preco": "29.90",
+      "imagem": "https://via.placeholder.com/300x180?text=Produto+1"
+    },
+    "2": {
+      "nome": "Produto 2",
+      "descricao": "Descrição do produto 2",
+      "preco": "59.90",
+      "imagem": "https://via.placeholder.com/300x180?text=Produto+2"
+    }
+  }
 }

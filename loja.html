@@ -14,76 +14,137 @@
       margin: 0; padding: 0;
       background: #f8f9fa;
       color: #001B3A;
+      padding-top: 70px; /* espaço para header fixo */
     }
+
+    /* Cabeçalho fixo */
     header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 60px;
       background: #001B3A;
       color: white;
-      padding: 15px 20px;
-      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+      z-index: 1000;
+    }
+
+    /* Logo */
+    .logo {
       font-size: 1.5rem;
       font-weight: bold;
+      cursor: pointer;
+      user-select: none;
     }
+
+    /* Área direita do header */
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    /* Botões login e carrinho */
+    .btn {
+      background: transparent;
+      border: none;
+      color: white;
+      font-size: 1.1rem;
+      cursor: pointer;
+      position: relative;
+      user-select: none;
+    }
+
+    /* Ícone do carrinho - usando emoji */
+    .btn-carrinho {
+      font-size: 1.4rem;
+    }
+
+    /* Indicador quantidade no carrinho */
+    .carrinho-quantidade {
+      position: absolute;
+      top: -6px;
+      right: -12px;
+      background: red;
+      color: white;
+      font-size: 0.7rem;
+      padding: 2px 6px;
+      border-radius: 50%;
+      font-weight: bold;
+      min-width: 18px;
+      text-align: center;
+    }
+
     main {
       max-width: 1200px;
-      margin: 20px auto;
+      margin: 0 auto 40px;
       padding: 0 15px;
     }
+
     .produtos-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
       gap: 20px;
     }
     .produto-card {
       background: white;
       border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      transition: transform 0.2s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     .produto-card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-8px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
     }
     .produto-imagem {
       width: 100%;
       height: 180px;
       object-fit: cover;
+      background: #ddd;
     }
     .produto-conteudo {
-      padding: 15px;
+      padding: 15px 20px;
       flex-grow: 1;
       display: flex;
       flex-direction: column;
     }
     .produto-nome {
-      font-size: 1.1rem;
-      margin: 0 0 8px;
-      flex-grow: 0;
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: #001B3A;
     }
     .produto-descricao {
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       color: #555;
       flex-grow: 1;
-      margin-bottom: 12px;
+      margin-bottom: 15px;
+      line-height: 1.3;
     }
     .produto-preco {
-      font-weight: bold;
-      font-size: 1.2rem;
+      font-weight: 700;
+      font-size: 1.3rem;
       color: #007f00;
-      margin-bottom: 12px;
+      margin-bottom: 15px;
     }
     .botao-comprar {
       background-color: #001B3A;
       color: white;
       border: none;
-      padding: 10px;
-      font-weight: bold;
-      border-radius: 5px;
+      padding: 12px 0;
+      font-weight: 700;
+      border-radius: 6px;
       cursor: pointer;
       text-align: center;
       text-decoration: none;
       user-select: none;
+      transition: background-color 0.25s ease;
     }
     .botao-comprar:hover {
       background-color: #003366;
@@ -96,13 +157,42 @@
       text-align: center;
       font-size: 0.9rem;
     }
+
+    /* Responsividade básica */
+    @media (max-width: 480px) {
+      .header-right {
+        gap: 10px;
+      }
+      .btn {
+        font-size: 1rem;
+      }
+    }
+    .logo {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
   </style>
 </head>
 <body>
-  <header>Loja ALB Sistemas</header>
+  <header>
+ <div class="logo" onclick="window.location.href='index.html'">
+  <img src="img/logo.png" alt="ALB Sistemas" style="height:50px; cursor:pointer;" />
+</div>
+    <div class="header-right">
+      <button class="btn btn-login" title="Área de Login">Login</button>
+      <button class="btn btn-carrinho" title="Carrinho de Compras">
+        🛒
+        <span class="carrinho-quantidade" id="carrinho-count">0</span>
+      </button>
+    </div>
+  </header>
+
   <main>
     <div id="produtos" class="produtos-grid">Carregando produtos...</div>
   </main>
+
   <footer>© 2025 ALB Sistemas - Todos os direitos reservados</footer>
 
   <!-- Firebase SDK compat para navegador -->
@@ -125,6 +215,10 @@
     const produtosRef = db.ref('produtos');
     const container = document.getElementById('produtos');
 
+    // Exemplo simples para contar itens no carrinho
+    let carrinhoCount = 0;
+    const carrinhoCountEl = document.getElementById('carrinho-count');
+
     produtosRef.on('value', snapshot => {
       const data = snapshot.val();
       container.innerHTML = '';
@@ -132,11 +226,7 @@
       if(data) {
         Object.keys(data).forEach(key => {
           const p = data[key];
-
-          // Exemplo: se não tiver imagem, usa placeholder
           const imgSrc = p.imagem || 'https://via.placeholder.com/300x180?text=Sem+Imagem';
-
-          // Link para WhatsApp com mensagem personalizada (exemplo)
           const whatsappLink = `https://wa.me/5511999999999?text=Olá,%20gostaria%20de%20comprar%20o%20produto%20${encodeURIComponent(p.nome)}`;
 
           container.innerHTML += `
@@ -154,6 +244,15 @@
       } else {
         container.innerHTML = '<p>Nenhum produto disponível.</p>';
       }
+    });
+
+    // Eventos dos botões (exemplo)
+    document.querySelector('.btn-login').addEventListener('click', () => {
+      alert('Aqui abriria a área de login!');
+    });
+
+    document.querySelector('.btn-carrinho').addEventListener('click', () => {
+      alert('Aqui abriria o carrinho de compras!');
     });
   </script>
 </body>
