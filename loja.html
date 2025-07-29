@@ -1,69 +1,55 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <!-- no <head> ou antes do fechamento do </body> -->
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
-
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Loja ALB</title>
+  <title>Loja ALB Sistemas</title>
   <style>
-    body { font-family: Arial; padding: 20px; background: #f4f4f4; }
-    .produto { background: white; padding: 10px; margin: 10px 0; border-radius: 5px; }
+    body { font-family: Arial; background: #f4f4f4; padding: 20px; }
+    .produto { background: #fff; margin: 10px 0; padding: 15px; border-radius: 6px; }
   </style>
 </head>
 <body>
-  <h1>Produtos da Loja</h1>
-  <div id="lista-produtos"></div>
+  <h1>Loja ALB Sistemas</h1>
+  <div id="produtos">Carregando produtos...</div>
 
-  <!-- Firebase SDK -->
-  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
 
- <script>
-  // Configuração Firebase
-  const firebaseConfig = {
-    apiKey: "AIzaSyBWefqDsrHoxE5omMq3Bnf9BTz5waAV-Qg",
-    authDomain: "alb-site.firebaseapp.com",
-    databaseURL: "https://alb-site-default-rtdb.firebaseio.com",
-    projectId: "alb-site",
-    storageBucket: "alb-site.appspot.com",
-    messagingSenderId: "619405356101",
-    appId: "1:619405356101:web:b7c8b22876a3005897872c"
-  };
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyBWefqDsrHoxE5omMq3Bnf9BTz5waAV-Qg",
+      authDomain: "alb-site.firebaseapp.com",
+      databaseURL: "https://alb-site-default-rtdb.firebaseio.com",
+      projectId: "alb-site",
+      storageBucket: "alb-site.appspot.com",
+      messagingSenderId: "619405356101",
+      appId: "1:619405356101:web:b7c8b22876a3005897872c"
+    };
 
-  // Inicializa app
-  firebase.initializeApp(firebaseConfig);
+    firebase.initializeApp(firebaseConfig);
 
-  // Referência do banco
-  const db = firebase.database();
+    const db = firebase.database();
+    const produtosRef = db.ref('produtos');
+    const container = document.getElementById('produtos');
 
-  // Referência a produtos
-  const produtosRef = db.ref('produtos');
+    produtosRef.on('value', (snapshot) => {
+      const data = snapshot.val();
+      container.innerHTML = '';
 
-  const container = document.getElementById('produtos');
-
-  produtosRef.on('value', (snapshot) => {
-    const data = snapshot.val();
-    container.innerHTML = '';
-
-    if (data) {
-      Object.keys(data).forEach(key => {
-        const p = data[key];
-        container.innerHTML += `
-          <div class="produto">
-            <h3>${p.nome}</h3>
-            <p>Preço: R$ ${p.preco}</p>
-          </div>
-        `;
-      });
-    } else {
-      container.innerHTML = 'Nenhum produto encontrado.';
-    }
-  });
-</script>
-
-  
+      if(data) {
+        Object.keys(data).forEach(key => {
+          const p = data[key];
+          container.innerHTML += `
+            <div class="produto">
+              <h3>${p.nome}</h3>
+              <p>Preço: R$ ${p.preco}</p>
+            </div>
+          `;
+        });
+      } else {
+        container.innerHTML = 'Nenhum produto encontrado.';
+      }
+    });
+  </script>
 </body>
 </html>
