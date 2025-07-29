@@ -1,12 +1,6 @@
 {
-  "produtos": {
-    "1": {
-      "nome": "Produto Exemplo",
-      "preco": "10.00"
-    },
-    "2": {
-      "nome": "Outro Produto",
-      "preco": "20.00"
-    }
-  }
+  "nome": "Nome do Produto",
+  "descricao": "Descrição curta do produto",
+  "preco": "59.90",
+  "imagem": "https://link-da-imagem.jpg"
 }

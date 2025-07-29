@@ -2,16 +2,110 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Loja ALB Sistemas</title>
   <style>
-    body { font-family: Arial; background: #f4f4f4; padding: 20px; }
-    .produto { background: #fff; margin: 10px 0; padding: 15px; border-radius: 6px; }
+    /* Reset básico */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0; padding: 0;
+      background: #f8f9fa;
+      color: #001B3A;
+    }
+    header {
+      background: #001B3A;
+      color: white;
+      padding: 15px 20px;
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    main {
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 0 15px;
+    }
+    .produtos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+      gap: 20px;
+    }
+    .produto-card {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s ease;
+    }
+    .produto-card:hover {
+      transform: translateY(-5px);
+    }
+    .produto-imagem {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .produto-conteudo {
+      padding: 15px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .produto-nome {
+      font-size: 1.1rem;
+      margin: 0 0 8px;
+      flex-grow: 0;
+    }
+    .produto-descricao {
+      font-size: 0.9rem;
+      color: #555;
+      flex-grow: 1;
+      margin-bottom: 12px;
+    }
+    .produto-preco {
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: #007f00;
+      margin-bottom: 12px;
+    }
+    .botao-comprar {
+      background-color: #001B3A;
+      color: white;
+      border: none;
+      padding: 10px;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      user-select: none;
+    }
+    .botao-comprar:hover {
+      background-color: #003366;
+    }
+    footer {
+      margin-top: 40px;
+      padding: 15px 0;
+      background: #001B3A;
+      color: white;
+      text-align: center;
+      font-size: 0.9rem;
+    }
   </style>
 </head>
 <body>
-  <h1>Loja ALB Sistemas</h1>
-  <div id="produtos">Carregando produtos...</div>
+  <header>Loja ALB Sistemas</header>
+  <main>
+    <div id="produtos" class="produtos-grid">Carregando produtos...</div>
+  </main>
+  <footer>© 2025 ALB Sistemas - Todos os direitos reservados</footer>
 
+  <!-- Firebase SDK compat para navegador -->
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
 
@@ -27,27 +121,38 @@
     };
 
     firebase.initializeApp(firebaseConfig);
-
     const db = firebase.database();
     const produtosRef = db.ref('produtos');
     const container = document.getElementById('produtos');
 
-    produtosRef.on('value', (snapshot) => {
+    produtosRef.on('value', snapshot => {
       const data = snapshot.val();
       container.innerHTML = '';
 
       if(data) {
         Object.keys(data).forEach(key => {
           const p = data[key];
+
+          // Exemplo: se não tiver imagem, usa placeholder
+          const imgSrc = p.imagem || 'https://via.placeholder.com/300x180?text=Sem+Imagem';
+
+          // Link para WhatsApp com mensagem personalizada (exemplo)
+          const whatsappLink = `https://wa.me/5511999999999?text=Olá,%20gostaria%20de%20comprar%20o%20produto%20${encodeURIComponent(p.nome)}`;
+
           container.innerHTML += `
-            <div class="produto">
-              <h3>${p.nome}</h3>
-              <p>Preço: R$ ${p.preco}</p>
+            <div class="produto-card">
+              <img src="${imgSrc}" alt="${p.nome}" class="produto-imagem" />
+              <div class="produto-conteudo">
+                <h3 class="produto-nome">${p.nome}</h3>
+                <p class="produto-descricao">${p.descricao || ''}</p>
+                <div class="produto-preco">R$ ${p.preco}</div>
+                <a href="${whatsappLink}" target="_blank" class="botao-comprar">Comprar</a>
+              </div>
             </div>
           `;
         });
       } else {
-        container.innerHTML = 'Nenhum produto encontrado.';
+        container.innerHTML = '<p>Nenhum produto disponível.</p>';
       }
     });
   </script>
